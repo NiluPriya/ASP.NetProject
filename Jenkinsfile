@@ -1,5 +1,8 @@
 pipeline {
 	 agent {label 'master'}
+	 triggers {
+                   githubPush()
+                  }
 	 options { skipDefaultCheckout() }
          stages {
            stage('CleanWorkspace') 
