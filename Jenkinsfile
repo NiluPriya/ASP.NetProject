@@ -1,24 +1,25 @@
 pipeline {
-	 agent any
+	 agent {label 'master'}
 	 options { skipDefaultCheckout() }
          stages {
            stage('CleanWorkspace') 
 		 {
-            steps {
+             steps {
 		    cleanWs()
-	          }
+	           }
 	         }
 	    stage('Checkout')
-		 {
+		 { 
+	      steps {    
+		    checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/NiluPriya/ASP.NetProject.git']]])
+		    }
 		 }
-  
             stage('Build') 
 		 {
-                  agent {label 'master'}
-    	           steps {
+              steps {
                     bat "\"${tool 'MSBuild'}\" TestProject.sln /p:Configuration=Debug"
                     }
-    			 }
-                 }
+    	          }
+               }
 	
            }
