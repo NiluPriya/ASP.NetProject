@@ -23,5 +23,5 @@ pipeline {
                     bat "\"${tool 'MSBuild'}\" TestProject.sln /p:Configuration=Debug"
                     }
     	          }
-               }
-          }
+                }
+            }
