@@ -7,15 +7,10 @@ pipeline {
 				stage('Build') {
 					agent {label 'master'}
     					steps {
-                    echo "Test Stage"
+                    bat "\"${tool 'MSBuild'}\" TestProject.sln /p:Configuration=Debug"
                     }
     					    
     					}
-				 stage('Stage 2') {
-      agent {label 'Slave1'}
-      steps {
-          echo "I am Slave"
-      }
-    }
+
 				}
 			}
