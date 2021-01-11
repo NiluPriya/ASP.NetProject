@@ -1,9 +1,14 @@
 pipeline {
 			agent any
-   
+   stages {
+        stage('CleanWorkspace') {
+            steps {
+		    cleanWs()
+	    }
+	}
   
   
-			stages {								
+											
 				stage('Build') {
 					agent {label 'master'}
     					steps {
@@ -15,5 +20,5 @@ pipeline {
 				}
 	
 	
-	}
+	
 }
