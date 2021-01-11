@@ -1,5 +1,5 @@
 pipeline {
-			agent none
+			agent any
    
   
   
@@ -13,4 +13,10 @@ pipeline {
     					}
 
 				}
-			}
+	post {
+		failure {  
+			emailext body: 'Jenkins Notification', subject: 'Jenkins Job Failed', to: 'priya.nilu1@outlook.com'
+		}
+	
+	}
+}
