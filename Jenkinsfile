@@ -13,10 +13,7 @@ pipeline {
     					}
 
 				}
-	post {
-		failure {  
-			emailext body: 'Jenkins Notification', subject: 'Jenkins Job Failed', to: 'priya.nilu1@outlook.com'
-		}
+	
 	
 	}
 }
