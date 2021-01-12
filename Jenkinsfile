@@ -23,15 +23,6 @@ pipeline {
                     bat "\"${tool 'MSBuild'}\" TestProject.sln /p:Configuration=Debug"
                     }
     	          }
-	    stage('Notification')
-		 {
-	      steps {
-		      emailext (
-                        to: 'priya.nilu1@outlook.com',
-                        subject:'Jenkins Notification',
-                        body: 'Job Success'
-			      )
-	            }
-		 }
+	    
                 }
             }
